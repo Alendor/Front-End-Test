@@ -1,0 +1,31 @@
+
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <input 
+    class="form-control mr-sm-2" 
+     name="keyword" [(ngModel)]="keyword" (keyup)="seek()" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="seek()" type="submit">Search</button>
+  </form>
+</nav>
+
+
+<div>
+
+   
+  <div *ngFor="let item of list_videos ">
+       
+    <div > 
+          <img  src="{{item.snippet.thumbnails.medium.url}}" alt="" >
+        
+        <div id="Hola" name="Hola"></div>
+    </div>
+    <div>{{item.snippet.title}}</div>
+    <div>{{item.snippet.description}}</div>
+   
+  </div>
+  <iframe id="ytplayer" type="text/html" width="720" height="405"
+  [src]="item.id.videoId | path:'https://www.youtube.com/embed/'"
+  frameborder="0" allowfullscreen>
+  </iframe>   
+</div>
+
