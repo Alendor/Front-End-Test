@@ -10,20 +10,41 @@ import { VideoService } from '../../Service/video.service';
 export class VideoComponent implements OnInit {
 
   public keyword: string;
-  public list_videos=[];
+  public list_search:any;
+  public link: string;
 
+  public list_recommended:any;
+
+  
+ 
   constructor(private video: VideoService) { }
 
+
+
   ngOnInit() {
-    
+    this.video.recommended()
+    .subscribe(resp =>{ 
+      this.list_recommended = resp.items;
+    });;
+  
   }
 
   seek(){
-    this.video.search(this.keyword)
-    .subscribe(resp =>{
-      this.list_videos= resp.items;
-      console.log(this.list_videos)
-    });
+    if(this.keyword !== undefined ){
+      this.video.search(this.keyword)
+      .subscribe(resp =>{
+      this.list_search = resp.items;
+      console.log(this.list_search);
+      });
+    }
+    
+  }
+
+  play( link1: string){
+    this.link = link1;
+    console.log(this.link);
   }
 
 }
+
+

@@ -7,13 +7,19 @@ import { Observable } from 'rxjs';
 })
 export class VideoService {
 
-  public url : string = "https://www.googleapis.com/youtube/v3/search";
+  public url : string = "https://www.googleapis.com/youtube/v3/";
 
 
   constructor(private http: HttpClient) {  }
 
   search( keyword : string ):Observable<any>{
-    let path = `${this.url}?part=snippet&maxResults=6&q=${keyword}&key=&type=video`;
+    let path = `${this.url}search?part=snippet&maxResults=6&q=${keyword}
+    &key=AIzaSyAHAzCQjK8HBHmc-H7JUZEjQayBJ0yOz_I&type=video`;
+    return this.http.get<any>(path);
+  }
+
+  recommended():Observable<any>{
+    let path = `${this.url}videos?part=snippet&chart=mostPopular&maxResults=6&regionCode=CO&key=AIzaSyAHAzCQjK8HBHmc-H7JUZEjQayBJ0yOz_I`;
     return this.http.get<any>(path);
   }
   
