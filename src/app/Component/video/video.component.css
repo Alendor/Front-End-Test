@@ -1,5 +1,13 @@
+/**
+* En el proyecto se incluye el framework Bootstrap para facilitar el diseño
+* pero se hacen algunas modificaciones a dichas plantillas
+*/
+
+
 .logo{
-    background-color: #fff
+    color: #fff;
+    height: 80px;
+    
 }
 
 .bg {
@@ -56,17 +64,22 @@
     padding: 15px;
 }
 
-@media only screen  and (max-width: 767px)  {
+/**
+* Se definen las propiedades de las etiquetas para las resoluciones menores a 768px
+*/
+
+@media  screen  and (max-width: 767px)  {
     .card-deck {
         display: -ms-flexbox;
         display: flex;
         -ms-flex: 1 0 0%;
         flex: 1 0 0%;
         -ms-flex-direction: column;
-        flex-direction: column;
+        flex-direction: unset;
         margin-right: 15px;
         margin-bottom: 0;
         margin-left: 15px;
+     
     }
     .card-player{
         width: 100%
@@ -76,5 +89,14 @@
         width: 100%
     }
     
+    .card-body{
+        display: none;  
+    }
+    
+    .div-player{
+        flex-direction: column !important;
+    }
+
 }
+
 
