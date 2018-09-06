@@ -39,7 +39,7 @@ export class VideoComponent implements OnInit {
     this.link = link;
     this.video_title = info.title; 
     this.description = info.description; 
-    // console.log(this.link);
+    console.log(this.link);
   }
 
 }

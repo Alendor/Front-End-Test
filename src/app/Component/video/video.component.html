@@ -1,17 +1,17 @@
 
 
   <nav class="navbar navbar-light bg">
-      <a class="navbar-brand">Experimentality</a>
+      <span class="Logo">Experimentality</span>
       <form class="form-inline">
         <input class="form-control mr-sm-2" name="keyword" [(ngModel)]="keyword" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" (click)="seek()" type="submit">Search</button>
       </form>
   </nav>
 
+
   <h2><span class="badge badge-secondary">Recommended</span></h2>
 <div class="card-deck" *ngIf="!list_search" >
-    
-  <div class="card" *ngFor="let item of list_recommended ">
+  <div class="card" (click)="play(item.id,item.snippet)" *ngFor="let item of list_recommended ">
     <img class="card-img-top" (click)="play(item.id,item.snippet)" src="{{item.snippet.thumbnails.medium.url}}" >
     <div class="card-body">
       <p class="titulo-video ">{{item.snippet.title}}</p>
@@ -22,35 +22,30 @@
   
 
 <div  class="card-deck" > 
-    <div class="card"  *ngFor="let item of list_search ">
-        <img class="card-img-top" (click)="play(item.id.videoId,item.snippet)"  src="{{item.snippet.thumbnails.medium.url}}"   >
+    <div class="card"   *ngFor="let item of list_search ">
+      <div (click)="play(item.id.videoId,item.snippet)">
+        <img class="card-img-top"   src="{{item.snippet.thumbnails.medium.url}}"   >
           <div class="card-body">
             <p class="card-text titulo-video ">{{item.snippet.title}}</p>
           </div>
+        </div>
     </div>
   </div>  
     
-  <div   class="card-deck" *ngIf="link">
-    <iframe class="card-img-top" id="ytplayer" type="text/html" width="720" height="405"
+  <div class="card-deck" *ngIf="link">
+    <div class="card-player">
+    <iframe class=" player  " id="ytplayer" type="text/html" width="720" height="405"
         [src]=" link | path:'https://www.youtube.com/embed/'"
         frameborder="0" allowfullscreen>
-    </iframe> 
-    <div class="card-body">
-      <p class="card-text titulo-video ">{{video_title}}</p>
-      <p class="card-text titulo-video ">{{description}}</p>
+    </iframe>
+      </div> 
+    <div class="card-description">
+      <h5 class="card-title">{{video_title}}</h5>
+       <p class="card-text description-video">{{description}}</p>
 
     </div>
 
   </div>
-
-
-
-
-<!-- <div class="prueba" >
-kjsdñllñ
-
-</div>
-   -->
 
   
 
