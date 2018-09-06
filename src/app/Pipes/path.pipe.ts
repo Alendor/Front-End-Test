@@ -12,7 +12,7 @@ export class PathPipe implements PipeTransform {
   }
 
   transform(value: any, url?: any): any {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url+value);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url+value+"?autoplay=1");
   }
 
 }

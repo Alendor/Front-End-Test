@@ -1,9 +1,36 @@
 
-
-
-.prueba{
-
-    background-color: black;
-    width: 400px;
-    height: 400px;
+.bg {
+    background-color: #1abc9c;
 }
+
+.titulo-video{
+    padding: 0rem;
+    margin: 0px;
+}
+
+.card{
+    margin: 0.3rem
+}
+
+.card-deck{
+    padding-left: 20px;
+}
+.card-body{
+
+    padding: 10px;
+}
+
+@media only screen  and (max-width: 767px)  {
+    .card-deck {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex: 1 0 0%;
+        flex: 1 0 0%;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        margin-right: 15px;
+        margin-bottom: 0;
+        margin-left: 15px;
+    }
+}
+

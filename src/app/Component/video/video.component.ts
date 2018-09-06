@@ -11,38 +11,35 @@ export class VideoComponent implements OnInit {
 
   public keyword: string;
   public list_search:any;
-  public link: string;
-
+  public link: any;
+  public video_title: any;
+  public description: any;
   public list_recommended:any;
 
-  
- 
   constructor(private video: VideoService) { }
 
-
-
   ngOnInit() {
-    this.video.recommended()
-    .subscribe(resp =>{ 
+    this.video.recommended().subscribe(resp =>{ 
       this.list_recommended = resp.items;
-    });;
-  
+      console.log(this.list_recommended);
+    });
   }
 
   seek(){
     if(this.keyword !== undefined ){
-      this.video.search(this.keyword)
-      .subscribe(resp =>{
+      this.video.search(this.keyword).subscribe(resp =>{
       this.list_search = resp.items;
-      console.log(this.list_search);
+       console.log(this.list_search);
       });
     }
     
   }
 
-  play( link1: string){
-    this.link = link1;
-    console.log(this.link);
+  play( link: any,info: any){
+    this.link = link;
+    this.video_title = info.title; 
+    this.description = info.description; 
+    // console.log(this.link);
   }
 
 }
